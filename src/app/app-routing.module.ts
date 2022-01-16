@@ -6,6 +6,10 @@ const routes: Routes = [
     path:"stripe",
     loadChildren: () => import('./stripe/stripe.module').then(m => m.StripeModule)
   },
+  {
+    path:"paypal",
+    loadChildren: () => import('./stripe/stripe.module').then(m => m.StripeModule)
+  }
 
 ];
 
