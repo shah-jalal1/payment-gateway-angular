@@ -22,7 +22,8 @@ export class PaypaComponent implements OnInit {
   private initConfig(): void {
     this.payPalConfig = {
       currency: 'EUR',
-      clientId: 'AZKcafmr4l9MjYojbjtoGaYxMPqBOuC_U9hQ5t7jT4QzuEtSE1zM1_snchUW6dat3cGYwlZ0YnPomvSH',
+      // clientId: 'AZKcafmr4l9MjYojbjtoGaYxMPqBOuC_U9hQ5t7jT4QzuEtSE1zM1_snchUW6dat3cGYwlZ0YnPomvSH',
+      clientId: 'AaJuvCEQ5XlX4iFlEpzoe4tGxResePoqn-Z0rVMi2NFIJYNI6pU5zwjyq1o3SotnSdZG0BKynBy-lCSZ',
       createOrderOnClient: (data) => < ICreateOrderRequest > {
         intent: 'CAPTURE',
         purchase_units: [{
@@ -59,9 +60,9 @@ export class PaypaComponent implements OnInit {
       },
       onApprove: (data, actions) => {
         console.log('onApprove - transaction was approved, but not authorized', data, actions);
-        // actions.order.get().then(details => {
-        //   console.log('onApprove - you can get full order details inside onApprove: ', details);
-        // });
+        actions.order.get().then(details => {
+          console.log('onApprove - you can get full order details inside onApprove: ', details);
+        });
 
       },
       onClientAuthorization: (data) => {

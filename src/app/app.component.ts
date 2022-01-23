@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {StripeService} from "ngx-stripe";
+
 
 
 @Component({
@@ -9,7 +12,9 @@ import {Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(
+
+  ) { }
   handler:any = null;
   ngOnInit() {
 
@@ -19,7 +24,7 @@ export class AppComponent implements OnInit {
   pay(amount: any) {
 
     var handler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_51HxRkiCumzEESdU2Z1FzfCVAJyiVHyHifo0GeCMAyzHPFme6v6ahYeYbQPpD9BvXbAacO2yFQ8ETlKjo4pkHSHSh00qKzqUVK9',
+      key: 'pk_test_51IeCaSIuW9m5uNpEd0c2E5hvnn18ad1CCSqlS5olW9lIyhFee3744sjy8GKnQXqIoezmbDKHT1cuyEqnTQP6WVYH00xcqP3fNj',
       locale: 'auto',
       token: function (token: any) {
         // You can access the token ID with `token.id`.
@@ -28,6 +33,8 @@ export class AppComponent implements OnInit {
         console.log('token amount', token.amount)
         console.log(token)
         alert('Token Created!!');
+
+
       }
     });
 
@@ -55,11 +62,15 @@ export class AppComponent implements OnInit {
             // Get the token ID to your server-side code for use.
             console.log(token)
             alert('Payment Success!!');
+
           }
+
         });
+
       }
 
       window.document.body.appendChild(s);
+
     }
   }
 }
